@@ -1,0 +1,19 @@
+button {
+  color: $colour-white;
+  background: linear-gradient(160deg, $colour-secondary, $colour-primary);
+  border: none;
+  border-radius: $radius-button;
+  padding: $padding-button;
+  margin: $margin-button;
+  box-shadow: $shadow-button;
+  font-size: 1.1rem;
+  transition: all 1s;
+  font-weight: normal;
+}
+
+button:hover {
+  opacity: 0.7;
+  box-shadow: $shadow-button-hover;
+  cursor: pointer;
+  outline: transparent;
+}

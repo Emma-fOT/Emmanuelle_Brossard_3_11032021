@@ -1,0 +1,57 @@
+footer {
+  background-color: $colour-darkgrey;
+}
+
+footer h2 {
+  margin: 0;
+  color: $colour-white;
+  padding: $padding-title-footer;
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+footer ul {
+  margin: 0;
+  color: $colour-white;
+  padding: $padding-ul-footer;
+}
+
+footer ul > li {
+  list-style-type: none;
+  line-height: 1.7rem;
+  font-size: 1rem;
+}
+
+footer span {
+  padding: $padding-footer-ico;
+  width: $width-footer-ico;
+}
+
+footer a {
+  color: $colour-white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: $colour-primary;
+}
+
+/* Tablet & Desktop */
+
+@media all and (min-width: 481px) {
+  footer h2,
+  footer ul {
+    text-align: center;
+  }
+}
+@media all and (min-width: 981px) {
+  footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  footer li {
+    width: 25%;
+  }
+}

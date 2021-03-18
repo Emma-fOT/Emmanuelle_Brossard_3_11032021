@@ -1,0 +1,213 @@
+/* Banner */
+
+.banner {
+  background-color: $colour-lightgrey;
+  text-align: center;
+}
+
+.banner__location {
+  background-color: $colour-midgrey;
+  padding: $padding-location;
+  box-shadow: $shadow-banner;
+  font-weight: 700;
+}
+
+.banner__location span {
+  padding-right: $padding-location-ico;
+}
+
+.banner h3 {
+  margin-top: $margin-banner-title-top;
+  margin-left: $margin-banner-title-side;
+  margin-right: $margin-banner-title-side;
+}
+
+/* Steps */
+
+.steps h3,
+.restaurants h3 {
+  margin: $margin-steps-title;
+}
+
+.steps,
+.restaurants {
+  padding: $padding-steps;
+}
+
+.steps > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.steps__step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: $colour-lightgrey;
+  margin: $margin-step;
+  padding: $padding-step;
+  border-radius: $radius-step;
+  line-height: $line-height-step;
+  box-shadow: $shadow-step;
+}
+
+.steps__step:hover {
+  background-color: $colour-primary-transparent;
+  transition: all 1s;
+}
+
+.steps__step--text {
+  font-weight: 700;
+}
+
+.steps__step span {
+  padding: $padding-step-ico;
+  width: $width-step-ico;
+}
+
+.steps__step--counter {
+  background-color: $colour-primary;
+  color: $colour-white;
+  text-align: center;
+  font-size: 0.9rem;
+  height: $size-step-counter;
+  width: $size-step-counter;
+  border-radius: $radius-step-counter;
+  margin-left: $margin-step-counter-left;
+}
+
+/* Restaurants */
+
+.restaurants {
+  background-color: $colour-lightgrey;
+}
+
+.restaurants > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurants__card {
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-card;
+  background-color: $colour-white;
+  margin: $margin-restaurants-card;
+  box-shadow: $shadow-card;
+}
+
+.restaurants__card > div {
+  position: relative;
+}
+
+.restaurants__card img {
+  width: 100%;
+  height: $height-restaurants-card;
+  object-fit: cover;
+  border-top-left-radius: $radius-card;
+  border-top-right-radius: $radius-card;
+}
+
+.restaurants__card__new {
+  background-color: $colour-tertiary;
+  color: green;
+  border-radius: 3px;
+  padding: $padding-restaurants-new;
+  text-align: right;
+  width: fit-content;
+  position: absolute;
+  top: $pos-top-restaurants__card__new;
+  right: $pos-right-restaurants__card__new;
+  margin: 0;
+  font-weight: bold;
+}
+
+.restaurants__card__txt {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: $padding-restaurants-txt;
+}
+
+.restaurants__card__txt div {
+  width: $width-col1-restaurants__card__txt;
+}
+
+.restaurants__card__txt h4 {
+  font-weight: 900;
+}
+
+.restaurants__card__txt h4,
+.restaurants__card__txt p {
+  font-size: 1.2rem;
+  margin: $margin-col1-restaurants__card__txt;
+}
+
+.restaurants__card__txt > p {
+  width: $width-col2-restaurants__card__txt;
+  font-size: 1.5rem;
+  text-align: right;
+  margin: $margin-col2-restaurants__card__txt;
+  position: relative;
+}
+
+.fas.fa-heart,
+.far.fa-heart {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.restaurants__card__txt > p:hover .far.fa-heart {
+  visibility: hidden;
+}
+
+.fas.fa-heart {
+  visibility: hidden;
+  background: $colour-white;
+  color: $colour-white;
+  transition: all 1s;
+}
+
+.restaurants__card__txt > p:hover .fas.fa-heart {
+  visibility: visible;
+  background: linear-gradient(0deg, $colour-secondary, $colour-primary);
+  /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
+  /*-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+/* Tablet & Desktop */
+
+@media all and (min-width: 981px) {
+  .steps > div {
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-around;
+  }
+}
+
+@media all and (min-width: 481px) {
+  .restaurants > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .restaurants__card {
+    width: 40%;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 980px) {
+  .steps__step {
+    width: $width-step-tablet;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

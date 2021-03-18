@@ -1,0 +1,58 @@
+$colour-primary: #9356dc;
+$colour-secondary: #ff79da;
+$colour-tertiary: #99e2d0;
+$colour-primary-transparent: #9356dc1f; /*I could use "rgba" instead*/
+$colour-white: #fff;
+$colour-black: #000;
+$colour-darkgrey: #2e2e2e;
+$colour-midgrey: #e0e0e0;
+$colour-lightgrey: #f2f2f2;
+
+$padding-header: 10px 0;
+$padding-button: 20px 30px;
+$padding-location: 20px;
+$padding-location-ico: 10px;
+$padding-steps: 50px 0;
+$padding-step: 20px;
+$padding-step-ico: 0 20px;
+$padding-restaurants-new: 8px 15px;
+$padding-restaurants-txt: 8px 15px;
+$padding-footer-ico: 0 5px;
+$padding-title-footer: 20px;
+$padding-ul-footer: 0 20px 15px 20px;
+
+$margin-button: 10px 0 50px 0;
+$margin-banner-title-top: 50px;
+$margin-banner-title-side: 50px;
+$margin-steps-title: 0 0 20px 20px;
+$margin-step: 10px 20px 20px 25px;
+$margin-step-counter-left: -30px;
+$margin-restaurants-card: 20px;
+$margin-col1-restaurants__card__txt: 5px;
+$margin-col2-restaurants__card__txt: 10px 10px 0 0;
+
+$line-height-step: 25px;
+$size-step-counter: 25px;
+$width-step-tablet: 280px;
+$width-step-ico: 20px;
+$width-footer-ico: 25px;
+$width-col1-restaurants__card__txt: 80%;
+$width-col2-restaurants__card__txt: 20%;
+$height-restaurants-card: 200px;
+
+$pos-top-restaurants__card__new: 10px;
+$pos-right-restaurants__card__new: 10px;
+
+$radius-button: 40px;
+$radius-step: 20px;
+$radius-step-counter: 12.5px;
+$radius-card: 15px;
+$radius-dish: 15px;
+
+$shadow-button: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+$shadow-button-hover: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
+$shadow-banner: 0 3px 3px 0 rgba(0, 0, 0, 0.2) inset;
+$shadow-steps: 25px;
+$shadow-step: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+$shadow-card: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+$shadow-dish: 15px;
