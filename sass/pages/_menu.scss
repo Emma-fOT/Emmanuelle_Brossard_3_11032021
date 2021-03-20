@@ -1,0 +1,133 @@
+.link-back {
+  padding: $padding-link-back;
+  font-size: 1.5em;
+  margin-top: $margin-top-link-back;
+}
+
+.menu {
+  background-color: $colour-lightgrey;
+  margin: 0;
+}
+
+.menu h3 {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.menu-title__img {
+  height: $height-menu-img;
+  background-image: url("images/restaurants/restaurant-a-la-francaise-cite-rouge.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-title__text {
+  margin: $margin-menu-title-txt;
+  border-radius: $radius-menu-title-txt;
+  padding: $padding-menu-title-txt;
+  background-color: $colour-lightgrey;
+  display: flex;
+  flex-direction: row;
+  width: $width-menu-title-txt;
+  align-items: flex-start;
+  align-content: space-between;
+  & h2 {
+    width: $width-menu-title-txtleft;
+    margin: 0;
+    font-size: 2rem;
+  }
+  & p {
+    width: $width-menu-title-txtright;
+    text-align: right;
+    font-size: 1.5rem;
+    position: relative;
+  }
+}
+
+.fas.fa-heart.heart-menu,
+.far.fa-heart.heart-menu {
+  position: absolute;
+  top: $pos-abs-top-heart-menu;
+  right: 0;
+}
+
+.menu h3 span {
+  border-bottom: $border-menu-subtitle-underline;
+  padding: $padding-menu-subtitle-underline;
+}
+
+.starters,
+.main-courses,
+.desserts {
+  padding: $padding-menu-subtitle;
+}
+
+.dish-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-card {
+  background-color: $colour-white;
+  padding: $padding-dish-card;
+  margin: $margin-dish-card;
+  box-shadow: $shadow-dish-card;
+  border-radius: $radius-dish-card;
+  h4 {
+    font-size: 1.2rem;
+    margin: $margin-dish-card-title;
+    width: $width-dish-card-title;
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  p:nth-child(1) {
+    width: $width-dish-card-title;
+  }
+  p:nth-child(2) {
+    width: $width-dish-card-txt;
+    text-align: right;
+    font-weight: 900;
+  }
+}
+
+.menu__button {
+  text-align: center;
+  margin-top: $margin-top-button-menu;
+}
+
+/* Tablet & Desktop */
+
+@media all and (min-width: 981px) {
+  .menu-title__img {
+    height: $height-menu-img-desktop;
+  }
+  .dish-cards {
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-around;
+  }
+
+  .dish-card {
+    width: $width-dish-card-desktop;
+    h4 {
+      height: $height-dish-card-title-desktop;
+    }
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 980px) {
+  .dish-card {
+    width: $width-dish-card-tablet;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .starters h3,
+  .main-courses h3,
+  .desserts h3 {
+    margin-left: $margin-left-menu-subtitle-tablet;
+  }
+}

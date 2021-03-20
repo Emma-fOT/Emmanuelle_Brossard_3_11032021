@@ -1,22 +1,43 @@
+/*Mobile-first project*/
+/*Breakpoints: 480px and 980px*/
 /*I could use "rgba" instead*/
 body {
   margin: 0;
   padding: 0;
 }
 
-h3 {
-  font-weight: 900;
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-
 p {
   font-size: 1rem;
   margin: 0;
+}
+
+.link--notmarked {
+  text-decoration: none;
+  color: black;
+}
+
+.fas.fa-heart {
+  visibility: hidden;
+  color: #fff;
+  transition: all 1s;
+}
+
+.restaurants__card__txt > p:hover .fas.fa-heart,
+.menu-title__text > p:hover .fas.fa-heart {
+  visibility: visible;
+  background: linear-gradient(0deg, #ff79da, #9356dc);
+  /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
+  /*-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+.restaurants__card__txt > p:hover .far.fa-heart,
+.menu-title__text > p:hover .far.fa-heart {
+  visibility: hidden;
 }
 
 body,
@@ -47,6 +68,10 @@ button:hover {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
   cursor: pointer;
   outline: transparent;
+}
+
+.button--lang {
+  padding: 15px 60px;
 }
 
 header {
@@ -98,6 +123,7 @@ footer a:hover {
   color: #9356dc;
 }
 
+/* Tablet & Desktop */
 @media all and (min-width: 481px) {
   footer h2,
 footer ul {
@@ -115,6 +141,150 @@ footer ul {
     width: 25%;
   }
 }
+.link-back {
+  padding: 20px 0 10px 20px;
+  font-size: 1.5em;
+  margin-top: -65px;
+}
+
+.menu {
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+.menu h3 {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.menu-title__img {
+  height: 300px;
+  background-image: url("images/restaurants/restaurant-a-la-francaise-cite-rouge.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-title__text {
+  margin: -50px 0 0 0;
+  border-radius: 40px 40px 0 0;
+  padding: 40px 5% 10px 5%;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: flex-start;
+  align-content: space-between;
+}
+.menu-title__text h2 {
+  width: 85%;
+  margin: 0;
+  font-size: 2rem;
+}
+.menu-title__text p {
+  width: 15%;
+  text-align: right;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.fas.fa-heart.heart-menu,
+.far.fa-heart.heart-menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.menu h3 span {
+  border-bottom: 3px solid #99e2d0;
+  padding: 0 0 5px 0;
+}
+
+.starters,
+.main-courses,
+.desserts {
+  padding: 10px 5%;
+}
+
+.dish-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-card {
+  background-color: #fff;
+  padding: 10px 20px 10px 10px;
+  margin: 15px 0;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+}
+.dish-card h4 {
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
+  width: 80%;
+}
+.dish-card div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.dish-card p:nth-child(1) {
+  width: 80%;
+}
+.dish-card p:nth-child(2) {
+  width: 20%;
+  text-align: right;
+  font-weight: 900;
+}
+
+.menu__button {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Tablet & Desktop */
+@media all and (min-width: 981px) {
+  .menu-title__img {
+    height: 500px;
+  }
+
+  .dish-cards {
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-around;
+  }
+
+  .dish-card {
+    width: 28%;
+  }
+  .dish-card h4 {
+    height: 50px;
+  }
+}
+@media all and (min-width: 481px) and (max-width: 980px) {
+  .dish-card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .starters h3,
+.main-courses h3,
+.desserts h3 {
+    margin-left: 23%;
+  }
+}
+.index h3 {
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+
+.index h4 {
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
+/* Banner */
 .banner {
   background-color: #f2f2f2;
   text-align: center;
@@ -137,6 +307,7 @@ footer ul {
   margin-right: 50px;
 }
 
+/* Steps */
 .steps h3,
 .restaurants h3 {
   margin: 0 0 20px 20px;
@@ -164,19 +335,17 @@ footer ul {
   line-height: 25px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
 }
-
 .steps__step:hover {
   background-color: #9356dc1f;
   transition: all 1s;
 }
-
-.steps__step--text {
-  font-weight: 700;
-}
-
 .steps__step span {
   padding: 0 20px;
   width: 20px;
+}
+
+.steps__step--text {
+  font-weight: 700;
 }
 
 .steps__step--counter {
@@ -190,6 +359,7 @@ footer ul {
   margin-left: -30px;
 }
 
+/* Restaurants */
 .restaurants {
   background-color: #f2f2f2;
 }
@@ -207,11 +377,9 @@ footer ul {
   margin: 20px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
 }
-
 .restaurants__card > div {
   position: relative;
 }
-
 .restaurants__card img {
   width: 100%;
   height: 200px;
@@ -241,21 +409,17 @@ footer ul {
   align-items: flex-start;
   padding: 8px 15px;
 }
-
 .restaurants__card__txt div {
   width: 80%;
 }
-
 .restaurants__card__txt h4 {
   font-weight: 900;
 }
-
 .restaurants__card__txt h4,
 .restaurants__card__txt p {
   font-size: 1.2rem;
   margin: 5px;
 }
-
 .restaurants__card__txt > p {
   width: 20%;
   font-size: 1.5rem;
@@ -264,41 +428,23 @@ footer ul {
   position: relative;
 }
 
-.fas.fa-heart,
-.far.fa-heart {
+.fas.fa-heart.heart-index,
+.far.fa-heart.heart-index {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.restaurants__card__txt > p:hover .far.fa-heart {
-  visibility: hidden;
-}
-
-.fas.fa-heart {
-  visibility: hidden;
-  background: #fff;
-  color: #fff;
-  transition: all 1s;
-}
-
-.restaurants__card__txt > p:hover .fas.fa-heart {
-  visibility: visible;
-  background: linear-gradient(0deg, #ff79da, #9356dc);
-  /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
-  /*-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  color: transparent;
-  cursor: pointer;
-}
-
+/* Tablet & Desktop */
 @media all and (min-width: 981px) {
   .steps > div {
     flex-direction: row;
     align-content: space-between;
     justify-content: space-around;
+  }
+
+  .restaurants__card__link {
+    width: 40%;
   }
 }
 @media all and (min-width: 481px) {
@@ -307,16 +453,16 @@ footer ul {
     flex-wrap: wrap;
     justify-content: space-around;
   }
-
-  .restaurants__card {
-    width: 40%;
-  }
 }
 @media all and (min-width: 481px) and (max-width: 980px) {
   .steps__step {
     width: 280px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .restaurants__card__link {
+    width: 50%;
   }
 }
 

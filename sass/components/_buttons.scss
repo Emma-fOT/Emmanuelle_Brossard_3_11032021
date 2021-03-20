@@ -17,3 +17,7 @@ button:hover {
   cursor: pointer;
   outline: transparent;
 }
+
+.button--lang {
+  padding: $padding-button-lang;
+}

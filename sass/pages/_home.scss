@@ -1,3 +1,13 @@
+.index h3 {
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+
+.index h4 {
+  font-weight: normal;
+  font-size: 1.2rem;
+}
+
 /* Banner */
 
 .banner {
@@ -50,20 +60,18 @@
   border-radius: $radius-step;
   line-height: $line-height-step;
   box-shadow: $shadow-step;
-}
-
-.steps__step:hover {
-  background-color: $colour-primary-transparent;
-  transition: all 1s;
+  &:hover {
+    background-color: $colour-primary-transparent;
+    transition: all 1s;
+  }
+  span {
+    padding: $padding-step-ico;
+    width: $width-step-ico;
+  }
 }
 
 .steps__step--text {
   font-weight: 700;
-}
-
-.steps__step span {
-  padding: $padding-step-ico;
-  width: $width-step-ico;
 }
 
 .steps__step--counter {
@@ -91,28 +99,26 @@
 .restaurants__card {
   display: flex;
   flex-direction: column;
-  border-radius: $radius-card;
+  border-radius: $radius-restaurants-card;
   background-color: $colour-white;
   margin: $margin-restaurants-card;
-  box-shadow: $shadow-card;
-}
-
-.restaurants__card > div {
-  position: relative;
-}
-
-.restaurants__card img {
-  width: 100%;
-  height: $height-restaurants-card;
-  object-fit: cover;
-  border-top-left-radius: $radius-card;
-  border-top-right-radius: $radius-card;
+  box-shadow: $shadow-restaurants-card;
+  > div {
+    position: relative;
+  }
+  img {
+    width: 100%;
+    height: $height-restaurants-card;
+    object-fit: cover;
+    border-top-left-radius: $radius-restaurants-card;
+    border-top-right-radius: $radius-restaurants-card;
+  }
 }
 
 .restaurants__card__new {
   background-color: $colour-tertiary;
   color: green;
-  border-radius: 3px;
+  border-radius: $radius-restaurants-new;
   padding: $padding-restaurants-new;
   text-align: right;
   width: fit-content;
@@ -129,58 +135,31 @@
   flex-wrap: nowrap;
   align-items: flex-start;
   padding: $padding-restaurants-txt;
+  div {
+    width: $width-col1-restaurants__card__txt;
+  }
+  h4 {
+    font-weight: 900;
+  }
+  h4,
+  p {
+    font-size: 1.2rem;
+    margin: $margin-col1-restaurants__card__txt;
+  }
+  > p {
+    width: $width-col2-restaurants__card__txt;
+    font-size: 1.5rem;
+    text-align: right;
+    margin: $margin-col2-restaurants__card__txt;
+    position: relative;
+  }
 }
 
-.restaurants__card__txt div {
-  width: $width-col1-restaurants__card__txt;
-}
-
-.restaurants__card__txt h4 {
-  font-weight: 900;
-}
-
-.restaurants__card__txt h4,
-.restaurants__card__txt p {
-  font-size: 1.2rem;
-  margin: $margin-col1-restaurants__card__txt;
-}
-
-.restaurants__card__txt > p {
-  width: $width-col2-restaurants__card__txt;
-  font-size: 1.5rem;
-  text-align: right;
-  margin: $margin-col2-restaurants__card__txt;
-  position: relative;
-}
-
-.fas.fa-heart,
-.far.fa-heart {
+.fas.fa-heart.heart-index,
+.far.fa-heart.heart-index {
   position: absolute;
   top: 0;
   right: 0;
-}
-
-.restaurants__card__txt > p:hover .far.fa-heart {
-  visibility: hidden;
-}
-
-.fas.fa-heart {
-  visibility: hidden;
-  background: $colour-white;
-  color: $colour-white;
-  transition: all 1s;
-}
-
-.restaurants__card__txt > p:hover .fas.fa-heart {
-  visibility: visible;
-  background: linear-gradient(0deg, $colour-secondary, $colour-primary);
-  /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
-  /*-webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;*/
-  background-clip: border-box;
-  -webkit-background-clip: text;
-  color: transparent;
-  cursor: pointer;
 }
 
 /* Tablet & Desktop */
@@ -191,6 +170,9 @@
     align-content: space-between;
     justify-content: space-around;
   }
+  .restaurants__card__link {
+    width: $width-restaurants-card-desktop;
+  }
 }
 
 @media all and (min-width: 481px) {
@@ -199,9 +181,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
-  .restaurants__card {
-    width: 40%;
-  }
 }
 
 @media all and (min-width: 481px) and (max-width: 980px) {
@@ -209,5 +188,8 @@
     width: $width-step-tablet;
     margin-left: auto;
     margin-right: auto;
+  }
+  .restaurants__card__link {
+    width: $width-restaurants-card-tablet;
   }
 }

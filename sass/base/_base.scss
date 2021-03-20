@@ -3,17 +3,36 @@ body {
   padding: 0;
 }
 
-h3 {
-  font-weight: 900;
-  font-size: 1.6rem;
-}
-
-h4 {
-  font-weight: normal;
-  font-size: 1.2rem;
-}
-
 p {
   font-size: 1rem;
   margin: 0;
+}
+
+.link--notmarked {
+  text-decoration: none;
+  color: black;
+}
+
+.fas.fa-heart {
+  visibility: hidden;
+  color: $colour-white;
+  transition: all 1s;
+}
+
+.restaurants__card__txt > p:hover .fas.fa-heart,
+.menu-title__text > p:hover .fas.fa-heart {
+  visibility: visible;
+  background: linear-gradient(0deg, $colour-secondary, $colour-primary);
+  /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
+  /*-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+}
+
+.restaurants__card__txt > p:hover .far.fa-heart,
+.menu-title__text > p:hover .far.fa-heart {
+  visibility: hidden;
 }
