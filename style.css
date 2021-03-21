@@ -1,6 +1,62 @@
 /*Mobile-first project*/
 /*Breakpoints: 480px and 980px*/
 /*I could use "rgba" instead*/
+@keyframes loading-spinner-txt {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes loading-spinner-circle {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    opacity: 0;
+  }
+}
+@keyframes loading-spinner-page {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes dish-slide {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes dish-order {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -17,14 +73,7 @@ p {
 }
 
 .fas.fa-heart {
-  visibility: hidden;
-  color: #fff;
-  transition: all 1s;
-}
-
-.restaurants__card__txt > p:hover .fas.fa-heart,
-.menu-title__text > p:hover .fas.fa-heart {
-  visibility: visible;
+  opacity: 0;
   background: linear-gradient(0deg, #ff79da, #9356dc);
   /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
   /*-webkit-background-clip: text;
@@ -32,12 +81,22 @@ p {
   background-clip: border-box;
   -webkit-background-clip: text;
   color: transparent;
+  transition: opacity 500ms;
+}
+
+.far.fa-heart {
+  transition: opacity 500ms;
+}
+
+.restaurants__card__txt > p:hover .fas.fa-heart,
+.menu-title__text > p:hover .fas.fa-heart {
+  opacity: 1;
   cursor: pointer;
 }
 
 .restaurants__card__txt > p:hover .far.fa-heart,
 .menu-title__text > p:hover .far.fa-heart {
-  visibility: hidden;
+  opacity: 0;
 }
 
 body,
@@ -46,7 +105,8 @@ button {
 }
 
 h1,
-h2 {
+h2,
+.loading-spinner p {
   font-family: "Shrikhand", sans-serif;
 }
 
@@ -55,19 +115,20 @@ button {
   background: linear-gradient(160deg, #ff79da, #9356dc);
   border: none;
   border-radius: 40px;
+  outline: transparent;
   padding: 20px 30px;
   margin: 10px 0 50px 0;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
   font-size: 1.1rem;
   transition: all 1s;
   font-weight: normal;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
   opacity: 0.7;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
   cursor: pointer;
   outline: transparent;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
 }
 
 .button--lang {
@@ -151,7 +212,6 @@ footer ul {
   background-color: #f2f2f2;
   margin: 0;
 }
-
 .menu h3 {
   font-weight: 300;
   text-transform: uppercase;
@@ -164,7 +224,6 @@ footer ul {
   background-size: cover;
   background-position: center;
 }
-
 .menu-title__text {
   margin: -50px 0 0 0;
   border-radius: 40px 40px 0 0;
@@ -206,35 +265,91 @@ footer ul {
   padding: 10px 5%;
 }
 
+.starters {
+  animation: dish-slide 1s ease 0.2s both;
+}
+
+.main-courses {
+  animation: dish-slide 1s ease 0.4s both;
+}
+
+.desserts {
+  animation: dish-slide 1s ease 0.6s both;
+}
+
 .dish-cards {
   display: flex;
   flex-direction: column;
 }
 
 .dish-card {
+  height: 80px;
   background-color: #fff;
-  padding: 10px 20px 10px 10px;
+  padding: 0;
   margin: 15px 0;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
   border-radius: 15px;
-}
-.dish-card h4 {
-  font-size: 1.2rem;
-  margin: 0 0 5px 0;
-  width: 80%;
-}
-.dish-card div {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: flex-end;
+  overflow: hidden;
 }
-.dish-card p:nth-child(1) {
+.dish-card__txt {
+  overflow: hidden;
   width: 80%;
 }
-.dish-card p:nth-child(2) {
-  width: 20%;
+.dish-card__txt h4 {
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  margin: 0 0 20px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dish-card__txt p {
+  padding-bottom: 10px;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dish-card__price p {
+  padding: 10px;
   text-align: right;
   font-weight: 900;
+}
+.dish-card__ico {
+  height: 80px;
+  width: 0;
+  background-color: #99e2d0;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition-duration: 0.6s;
+  /*opacity: 0;*/
+}
+.dish-card__ico p {
+  width: 80px;
+  text-align: center;
+}
+.dish-card__ico p span {
+  color: #fff;
+}
+.dish-card:hover {
+  cursor: pointer;
+}
+.dish-card:hover .dish-card__ico {
+  width: 80px;
+  transform: scaleX(1);
+}
+.dish-card:hover .dish-card__ico p {
+  transform: rotate(1turn);
+  transition-duration: 0.6s;
 }
 
 .menu__button {
@@ -252,13 +367,11 @@ footer ul {
     flex-direction: row;
     align-content: space-between;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   .dish-card {
-    width: 28%;
-  }
-  .dish-card h4 {
-    height: 50px;
+    width: 30%;
   }
 }
 @media all and (min-width: 481px) and (max-width: 980px) {
@@ -274,11 +387,44 @@ footer ul {
     margin-left: 23%;
   }
 }
+.loading-spinner {
+  height: 500px;
+  z-index: 1000;
+}
+.loading-spinner p {
+  font-size: 3rem;
+  text-align: center;
+  margin: 200px 0 0 0;
+  background: -webkit-linear-gradient(#9356dc, #ff79da);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: loading-spinner-txt 2s ease-in-out both;
+  position: relative;
+}
+.loading-spinner::before {
+  content: "";
+  border: solid 10px #ff79da;
+  border-bottom-color: #99e2d0;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  left: 50%;
+  top: 350px;
+  transform: translate3d(-50%, -50%, 0);
+  animation: loading-spinner-circle 2s linear both;
+}
+
+.page-content {
+  animation: loading-spinner-page 1s ease 2s both;
+  margin-top: -700px;
+}
+
 .index h3 {
   font-weight: 900;
   font-size: 1.6rem;
 }
-
 .index h4 {
   font-weight: normal;
   font-size: 1.2rem;
@@ -289,18 +435,15 @@ footer ul {
   background-color: #f2f2f2;
   text-align: center;
 }
-
 .banner__location {
   background-color: #e0e0e0;
   padding: 20px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2) inset;
   font-weight: 700;
 }
-
 .banner__location span {
   padding-right: 10px;
 }
-
 .banner h3 {
   margin-top: 50px;
   margin-left: 50px;
@@ -308,21 +451,32 @@ footer ul {
 }
 
 /* Steps */
+.steps,
+.restaurants {
+  padding: 50px 0;
+}
 .steps h3,
 .restaurants h3 {
   margin: 0 0 20px 20px;
 }
 
-.steps,
-.restaurants {
-  padding: 50px 0;
+.steps {
+  /* - code optimization - This code uses the "paint" level, which makes it slower
+  Remember: calculation ranking: style > layout > paint > composition (transform and opacity)
+  .steps__step {
+    ...
+    box-shadow: $shadow-step;
+    transition: background-color 1s;
+    &:hover {
+      background-color: $colour-primary-transparent;
+    }
+  }*/
+  /* - code optimization - This code uses only the "composition" level, which makes it faster*/
 }
-
 .steps > div {
   display: flex;
   flex-direction: column;
 }
-
 .steps__step {
   display: flex;
   flex-direction: row;
@@ -334,20 +488,32 @@ footer ul {
   border-radius: 20px;
   line-height: 25px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
 }
-.steps__step:hover {
+.steps__step::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 20px;
   background-color: #9356dc1f;
-  transition: all 1s;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 500ms;
+}
+.steps__step:hover::after {
+  opacity: 1;
 }
 .steps__step span {
   padding: 0 20px;
   width: 20px;
 }
-
 .steps__step--text {
   font-weight: 700;
 }
-
 .steps__step--counter {
   background-color: #9356dc;
   color: #fff;
@@ -363,12 +529,10 @@ footer ul {
 .restaurants {
   background-color: #f2f2f2;
 }
-
 .restaurants > div {
   display: flex;
   flex-direction: column;
 }
-
 .restaurants__card {
   display: flex;
   flex-direction: column;
@@ -376,6 +540,11 @@ footer ul {
   background-color: #fff;
   margin: 20px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+  transform: scale(1);
+  transition: transform 500ms;
+}
+.restaurants__card:hover {
+  transform: scale(1.05);
 }
 .restaurants__card > div {
   position: relative;
@@ -387,7 +556,6 @@ footer ul {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
-
 .restaurants__card__new {
   background-color: #99e2d0;
   color: green;
@@ -401,7 +569,6 @@ footer ul {
   margin: 0;
   font-weight: bold;
 }
-
 .restaurants__card__txt {
   display: flex;
   flex-direction: row;

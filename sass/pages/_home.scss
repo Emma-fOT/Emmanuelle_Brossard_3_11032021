@@ -1,11 +1,47 @@
-.index h3 {
-  font-weight: 900;
-  font-size: 1.6rem;
+.loading-spinner {
+  height: 500px;
+  z-index: 1000;
+  p {
+    font-size: 3rem;
+    text-align: center;
+    margin: 200px 0 0 0;
+    background: -webkit-linear-gradient($colour-primary, $colour-secondary);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: loading-spinner-txt 2s ease-in-out both;
+    position: relative;
+  }
+  &::before {
+    content: "";
+    border: solid 10px $colour-secondary;
+    border-bottom-color: $colour-tertiary;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 50%;
+    top: 350px;
+    transform: translate3d(-50%, -50%, 0);
+    animation: loading-spinner-circle 2s linear both;
+  }
 }
 
-.index h4 {
-  font-weight: normal;
-  font-size: 1.2rem;
+.page-content {
+  animation: loading-spinner-page 1s ease 2s both;
+  margin-top: -700px;
+}
+
+.index {
+  h3 {
+    font-weight: 900;
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    font-weight: normal;
+    font-size: 1.2rem;
+  }
 }
 
 /* Banner */
@@ -13,145 +49,167 @@
 .banner {
   background-color: $colour-lightgrey;
   text-align: center;
-}
-
-.banner__location {
-  background-color: $colour-midgrey;
-  padding: $padding-location;
-  box-shadow: $shadow-banner;
-  font-weight: 700;
-}
-
-.banner__location span {
-  padding-right: $padding-location-ico;
-}
-
-.banner h3 {
-  margin-top: $margin-banner-title-top;
-  margin-left: $margin-banner-title-side;
-  margin-right: $margin-banner-title-side;
+  &__location {
+    background-color: $colour-midgrey;
+    padding: $padding-location;
+    box-shadow: $shadow-banner;
+    font-weight: 700;
+    span {
+      padding-right: $padding-location-ico;
+    }
+  }
+  h3 {
+    margin-top: $margin-banner-title-top;
+    margin-left: $margin-banner-title-side;
+    margin-right: $margin-banner-title-side;
+  }
 }
 
 /* Steps */
 
-.steps h3,
-.restaurants h3 {
-  margin: $margin-steps-title;
-}
-
 .steps,
 .restaurants {
   padding: $padding-steps;
+  h3 {
+    margin: $margin-steps-title;
+  }
 }
 
-.steps > div {
-  display: flex;
-  flex-direction: column;
-}
-
+.steps {
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+  /* - code optimization - This code uses the "paint" level, which makes it slower
+Remember: calculation ranking: style > layout > paint > composition (transform and opacity)
 .steps__step {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: nowrap;
-  background-color: $colour-lightgrey;
-  margin: $margin-step;
-  padding: $padding-step;
-  border-radius: $radius-step;
-  line-height: $line-height-step;
+  ...
   box-shadow: $shadow-step;
+  transition: background-color 1s;
   &:hover {
     background-color: $colour-primary-transparent;
-    transition: all 1s;
   }
-  span {
-    padding: $padding-step-ico;
-    width: $width-step-ico;
+}*/
+  /* - code optimization - This code uses only the "composition" level, which makes it faster*/
+  &__step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: $colour-lightgrey;
+    margin: $margin-step;
+    padding: $padding-step;
+    border-radius: $radius-step;
+    line-height: $line-height-step;
+    @include shadow(0.1);
+    position: relative;
+    z-index: 1;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: $radius-step;
+      background-color: $colour-primary-transparent;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 500ms;
+    }
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+    span {
+      padding: $padding-step-ico;
+      width: $width-step-ico;
+    }
+    &--text {
+      font-weight: 700;
+    }
+    &--counter {
+      background-color: $colour-primary;
+      color: $colour-white;
+      text-align: center;
+      font-size: 0.9rem;
+      height: $size-step-counter;
+      width: $size-step-counter;
+      border-radius: $radius-step-counter;
+      margin-left: $margin-step-counter-left;
+    }
   }
-}
-
-.steps__step--text {
-  font-weight: 700;
-}
-
-.steps__step--counter {
-  background-color: $colour-primary;
-  color: $colour-white;
-  text-align: center;
-  font-size: 0.9rem;
-  height: $size-step-counter;
-  width: $size-step-counter;
-  border-radius: $radius-step-counter;
-  margin-left: $margin-step-counter-left;
 }
 
 /* Restaurants */
 
 .restaurants {
   background-color: $colour-lightgrey;
-}
-
-.restaurants > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.restaurants__card {
-  display: flex;
-  flex-direction: column;
-  border-radius: $radius-restaurants-card;
-  background-color: $colour-white;
-  margin: $margin-restaurants-card;
-  box-shadow: $shadow-restaurants-card;
   > div {
-    position: relative;
+    display: flex;
+    flex-direction: column;
   }
-  img {
-    width: 100%;
-    height: $height-restaurants-card;
-    object-fit: cover;
-    border-top-left-radius: $radius-restaurants-card;
-    border-top-right-radius: $radius-restaurants-card;
-  }
-}
-
-.restaurants__card__new {
-  background-color: $colour-tertiary;
-  color: green;
-  border-radius: $radius-restaurants-new;
-  padding: $padding-restaurants-new;
-  text-align: right;
-  width: fit-content;
-  position: absolute;
-  top: $pos-top-restaurants__card__new;
-  right: $pos-right-restaurants__card__new;
-  margin: 0;
-  font-weight: bold;
-}
-
-.restaurants__card__txt {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  padding: $padding-restaurants-txt;
-  div {
-    width: $width-col1-restaurants__card__txt;
-  }
-  h4 {
-    font-weight: 900;
-  }
-  h4,
-  p {
-    font-size: 1.2rem;
-    margin: $margin-col1-restaurants__card__txt;
-  }
-  > p {
-    width: $width-col2-restaurants__card__txt;
-    font-size: 1.5rem;
-    text-align: right;
-    margin: $margin-col2-restaurants__card__txt;
-    position: relative;
+  &__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: $radius-restaurants-card;
+    background-color: $colour-white;
+    margin: $margin-restaurants-card;
+    @include shadow(0.05);
+    transform: scale(1);
+    transition: transform 500ms;
+    &:hover {
+      transform: scale(1.05);
+    }
+    > div {
+      position: relative;
+    }
+    img {
+      width: 100%;
+      height: $height-restaurants-card;
+      object-fit: cover;
+      border-top-left-radius: $radius-restaurants-card;
+      border-top-right-radius: $radius-restaurants-card;
+    }
+    &__new {
+      background-color: $colour-tertiary;
+      color: green;
+      border-radius: $radius-restaurants-new;
+      padding: $padding-restaurants-new;
+      text-align: right;
+      width: fit-content;
+      position: absolute;
+      top: $pos-top-restaurants__card__new;
+      right: $pos-right-restaurants__card__new;
+      margin: 0;
+      font-weight: bold;
+    }
+    &__txt {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      padding: $padding-restaurants-txt;
+      div {
+        width: $width-col1-restaurants__card__txt;
+      }
+      h4 {
+        font-weight: 900;
+      }
+      h4,
+      p {
+        font-size: 1.2rem;
+        margin: $margin-col1-restaurants__card__txt;
+      }
+      > p {
+        width: $width-col2-restaurants__card__txt;
+        font-size: 1.5rem;
+        text-align: right;
+        margin: $margin-col2-restaurants__card__txt;
+        position: relative;
+      }
+    }
   }
 }
 

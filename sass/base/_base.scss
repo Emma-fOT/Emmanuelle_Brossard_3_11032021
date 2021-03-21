@@ -14,14 +14,7 @@ p {
 }
 
 .fas.fa-heart {
-  visibility: hidden;
-  color: $colour-white;
-  transition: all 1s;
-}
-
-.restaurants__card__txt > p:hover .fas.fa-heart,
-.menu-title__text > p:hover .fas.fa-heart {
-  visibility: visible;
+  opacity: 0;
   background: linear-gradient(0deg, $colour-secondary, $colour-primary);
   /*background: -webkit-linear-gradient($colour-primary, $colour-secondary);*/
   /*-webkit-background-clip: text;
@@ -29,10 +22,20 @@ p {
   background-clip: border-box;
   -webkit-background-clip: text;
   color: transparent;
+  transition: opacity 500ms;
+}
+
+.far.fa-heart {
+  transition: opacity 500ms;
+}
+
+.restaurants__card__txt > p:hover .fas.fa-heart,
+.menu-title__text > p:hover .fas.fa-heart {
+  opacity: 1;
   cursor: pointer;
 }
 
 .restaurants__card__txt > p:hover .far.fa-heart,
 .menu-title__text > p:hover .far.fa-heart {
-  visibility: hidden;
+  opacity: 0;
 }

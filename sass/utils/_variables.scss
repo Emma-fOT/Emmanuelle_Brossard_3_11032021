@@ -17,7 +17,7 @@ $padding-steps: 50px 0;
 $padding-step: 20px;
 $padding-step-ico: 0 20px;
 $padding-restaurants-new: 8px 15px;
-$padding-restaurants-txt: 8px 15px;
+$padding-restaurants-txt: $padding-restaurants-new;
 $padding-footer-ico: 0 5px;
 $padding-title-footer: 20px;
 $padding-ul-footer: 0 20px 15px 20px;
@@ -25,7 +25,7 @@ $padding-link-back: 20px 0 10px 20px;
 $padding-menu-title-txt: 40px 5% 10px 5%;
 $padding-menu-subtitle-underline: 0 0 5px 0;
 $padding-menu-subtitle: 10px 5%;
-$padding-dish-card: 10px 20px 10px 10px;
+$padding-dish-card: 10px;
 
 $margin-button: 10px 0 50px 0;
 $margin-top-button-menu: 30px;
@@ -40,33 +40,33 @@ $margin-col2-restaurants__card__txt: 10px 10px 0 0;
 $margin-top-link-back: -65px;
 $margin-menu-title-txt: -50px 0 0 0;
 $margin-dish-card: 15px 0;
-$margin-dish-card-title: 0 0 5px 0;
+$margin-dish-card-title: 0 0 20px 0;
 $margin-left-menu-subtitle-tablet: 23%;
 
 $line-height-step: 25px;
 
-$size-step-counter: 25px;
+$size-step-counter: $line-height-step;
 
 $width-step-tablet: 280px;
 $width-step-ico: 20px;
 $width-footer-ico: 25px;
 $width-col1-restaurants__card__txt: 80%;
-$width-col2-restaurants__card__txt: 20%;
+$width-col2-restaurants__card__txt: 100% - $width-col1-restaurants__card__txt;
 $width-restaurants-card: 40%;
-$width-restaurants-card-desktop: 40%;
+$width-restaurants-card-desktop: $width-restaurants-card;
 $width-restaurants-card-tablet: 50%;
 $width-menu-title-txt: 90%;
 $width-menu-title-txtleft: 85%;
-$width-menu-title-txtright: 15%;
+$width-menu-title-txtright: 100%- $width-menu-title-txtleft;
 $width-dish-card-title: 80%;
-$width-dish-card-txt: 20%;
-$width-dish-card-desktop: 28%;
+$width-dish-card-desktop: 30%;
 $width-dish-card-tablet: 50%;
+$width-dish-card-txt: 80%;
 
 $height-restaurants-card: 200px;
 $height-menu-img: 300px;
 $height-menu-img-desktop: 500px;
-$height-dish-card-title-desktop: 50px;
+$height-dish-card: 80px;
 
 $pos-top-restaurants__card__new: 10px;
 $pos-right-restaurants__card__new: 10px;
@@ -81,12 +81,8 @@ $radius-restaurants-new: 3px;
 $radius-menu-title-txt: 40px 40px 0 0;
 $radius-dish-card: 15px;
 
-$shadow-button: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-$shadow-button-hover: 0 5px 10px 0 rgba(0, 0, 0, 0.6);
 $shadow-banner: 0 3px 3px 0 rgba(0, 0, 0, 0.2) inset;
 $shadow-steps: 25px;
-$shadow-step: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-$shadow-restaurants-card: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
-$shadow-dish-card: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+// Other shadows in the mixin "shadow"
 
 $border-menu-subtitle-underline: 3px solid $colour-tertiary;

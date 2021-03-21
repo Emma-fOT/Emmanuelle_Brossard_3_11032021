@@ -7,41 +7,42 @@
 .menu {
   background-color: $colour-lightgrey;
   margin: 0;
-}
-
-.menu h3 {
-  font-weight: 300;
-  text-transform: uppercase;
-}
-
-.menu-title__img {
-  height: $height-menu-img;
-  background-image: url("images/restaurants/restaurant-a-la-francaise-cite-rouge.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.menu-title__text {
-  margin: $margin-menu-title-txt;
-  border-radius: $radius-menu-title-txt;
-  padding: $padding-menu-title-txt;
-  background-color: $colour-lightgrey;
-  display: flex;
-  flex-direction: row;
-  width: $width-menu-title-txt;
-  align-items: flex-start;
-  align-content: space-between;
-  & h2 {
-    width: $width-menu-title-txtleft;
-    margin: 0;
-    font-size: 2rem;
+  h3 {
+    font-weight: 300;
+    text-transform: uppercase;
   }
-  & p {
-    width: $width-menu-title-txtright;
-    text-align: right;
-    font-size: 1.5rem;
-    position: relative;
+}
+
+.menu-title {
+  &__img {
+    height: $height-menu-img;
+    background-image: url("images/restaurants/restaurant-a-la-francaise-cite-rouge.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__text {
+    margin: $margin-menu-title-txt;
+    border-radius: $radius-menu-title-txt;
+    padding: $padding-menu-title-txt;
+    background-color: $colour-lightgrey;
+    display: flex;
+    flex-direction: row;
+    width: $width-menu-title-txt;
+    align-items: flex-start;
+    align-content: space-between;
+    & h2 {
+      width: $width-menu-title-txtleft;
+      margin: 0;
+      font-size: 2rem;
+    }
+    & p {
+      width: $width-menu-title-txtright;
+      text-align: right;
+      font-size: 1.5rem;
+      position: relative;
+    }
   }
 }
 
@@ -63,34 +64,92 @@
   padding: $padding-menu-subtitle;
 }
 
+.starters {
+  @include slide-anim(1);
+}
+
+.main-courses {
+  @include slide-anim(2);
+}
+
+.desserts {
+  @include slide-anim(3);
+}
+
 .dish-cards {
   display: flex;
   flex-direction: column;
 }
 
 .dish-card {
+  height: $height-dish-card;
   background-color: $colour-white;
-  padding: $padding-dish-card;
+  padding: 0;
   margin: $margin-dish-card;
-  box-shadow: $shadow-dish-card;
   border-radius: $radius-dish-card;
-  h4 {
-    font-size: 1.2rem;
-    margin: $margin-dish-card-title;
-    width: $width-dish-card-title;
-  }
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-  p:nth-child(1) {
-    width: $width-dish-card-title;
-  }
-  p:nth-child(2) {
+  @include shadow(0.05);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  overflow: hidden;
+  &__txt {
+    overflow: hidden;
     width: $width-dish-card-txt;
-    text-align: right;
-    font-weight: 900;
+    h4 {
+      padding-top: $padding-dish-card;
+      padding-left: $padding-dish-card;
+      font-size: 1.2rem;
+      margin: $margin-dish-card-title;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p {
+      padding-bottom: $padding-dish-card;
+      padding-left: $padding-dish-card;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__price {
+    p {
+      padding: $padding-dish-card;
+      text-align: right;
+      font-weight: 900;
+    }
+  }
+  &__ico {
+    height: $height-dish-card;
+    width: 0;
+    background-color: $colour-tertiary;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: $radius-dish-card;
+    border-bottom-right-radius: $radius-dish-card;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition-duration: 0.6s;
+    /*opacity: 0;*/
+    p {
+      width: $height-dish-card;
+      text-align: center;
+      span {
+        color: $colour-white;
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    .dish-card__ico {
+      width: $height-dish-card;
+      transform: scaleX(1);
+      p {
+        transform: rotate(1turn);
+        transition-duration: 0.6s;
+      }
+    }
   }
 }
 
@@ -109,13 +168,11 @@
     flex-direction: row;
     align-content: space-between;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   .dish-card {
     width: $width-dish-card-desktop;
-    h4 {
-      height: $height-dish-card-title-desktop;
-    }
   }
 }
 

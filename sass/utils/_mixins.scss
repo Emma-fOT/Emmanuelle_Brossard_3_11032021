@@ -1,0 +1,7 @@
+@mixin shadow($intensity: 0.2) {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, $intensity);
+}
+
+@mixin slide-anim($ranking) {
+  animation: dish-slide 1s ease 0.2s * $ranking both;
+}
